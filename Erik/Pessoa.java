@@ -1,0 +1,21 @@
+package atividadepoo;
+
+import java.util.Scanner;
+
+public class Pessoa {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Informe seu nome: ");
+		String nome = scan.nextLine();
+		System.out.println("Informe sua idade: ");
+		int idade = scan.nextInt();
+		
+		apresentar(nome,idade);
+		scan.close(); 
+    }
+	public static void apresentar(String nome, int idade) {
+		System.out.printf("Olá, meu nome é %s e tenho %d anos", nome, idade);
+	}
+
+}
