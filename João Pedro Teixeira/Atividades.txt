@@ -1,0 +1,473 @@
+CÓDIGOS DAS 10 ATIVIDADES 
+
+
+public class Main {
+public static void main(String[] args) {
+   Pessoa p = new Pessoa();
+   p.nome = "João";
+   p.idade = 18;
+   p.apresentar();
+}
+}
+class Pessoa {
+String nome;
+int idade;
+void apresentar() {
+   System.out.println("Olá, meu nome é " + nome
+           + " e tenho " + idade + " anos.");
+}
+}
+
+
+================================================================================
+ARQUIVO: Atividade02/Atividade02_Carro.java
+================================================================================
+
+import java.util.Scanner;
+
+class Carro {
+    String marca;
+    String modelo;
+    int ano;
+
+    void exibirDados() {
+        System.out.println("Marca: " + marca);
+        System.out.println("Modelo: " + modelo);
+        System.out.println("Ano: " + ano);
+    }
+}
+
+public class Atividade02_Carro {
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+        Carro carro = new Carro();
+
+        System.out.print("Digite a marca: ");
+        carro.marca = entrada.nextLine();
+
+        System.out.print("Digite o modelo: ");
+        carro.modelo = entrada.nextLine();
+
+        System.out.print("Digite o ano: ");
+        carro.ano = entrada.nextInt();
+
+        carro.exibirDados();
+        entrada.close();
+    }
+}
+
+
+================================================================================
+ARQUIVO: Atividade03/Atividade03_Aluno.java
+================================================================================
+
+import java.util.Scanner;
+
+class Aluno {
+    String nome;
+    int idade;
+    double nota;
+
+    String verificarSituacao() {
+        if (nota >= 6) {
+            return "Aprovado";
+        } else {
+            return "Reprovado";
+        }
+    }
+}
+
+public class Atividade03_Aluno {
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+        Aluno aluno = new Aluno();
+
+        System.out.print("Digite o nome: ");
+        aluno.nome = entrada.nextLine();
+
+        System.out.print("Digite a idade: ");
+        aluno.idade = entrada.nextInt();
+
+        System.out.print("Digite a nota: ");
+        aluno.nota = entrada.nextDouble();
+
+        System.out.println("Nome: " + aluno.nome);
+        System.out.println("Nota: " + aluno.nota);
+        System.out.println("Situacao: " + aluno.verificarSituacao());
+
+        entrada.close();
+    }
+}
+
+
+================================================================================
+ARQUIVO: Atividade04/Atividade04_Produto.java
+================================================================================
+
+import java.util.Scanner;
+
+class Produto {
+    String nome;
+    double preco;
+    int quantidade;
+
+    double calcularTotal() {
+        return preco * quantidade;
+    }
+}
+
+public class Atividade04_Produto {
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+        Produto produto = new Produto();
+
+        System.out.print("Digite o nome do produto: ");
+        produto.nome = entrada.nextLine();
+
+        System.out.print("Digite o preco: ");
+        produto.preco = entrada.nextDouble();
+
+        System.out.print("Digite a quantidade: ");
+        produto.quantidade = entrada.nextInt();
+
+        System.out.printf("Valor total da compra: R$ %.2f%n", produto.calcularTotal());
+        entrada.close();
+    }
+}
+
+
+================================================================================
+ARQUIVO: Atividade05/Atividade05_ContaBancaria.java
+================================================================================
+
+import java.util.Scanner;
+
+class ContaBancaria {
+    String titular;
+    double saldo;
+
+    void depositar(double valor) {
+        if (valor > 0) {
+            saldo = saldo + valor;
+            System.out.println("Deposito realizado com sucesso.");
+        } else {
+            System.out.println("O valor do deposito deve ser positivo.");
+        }
+    }
+
+    void sacar(double valor) {
+        if (valor > 0 && valor <= saldo) {
+            saldo = saldo - valor;
+            System.out.println("Saque realizado com sucesso.");
+        } else {
+            System.out.println("Saque nao pode ser realizado: saldo insuficiente ou valor invalido.");
+        }
+    }
+
+    void exibirSaldo() {
+        System.out.printf("Saldo atual: R$ %.2f%n", saldo);
+    }
+}
+
+public class Atividade05_ContaBancaria {
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+        ContaBancaria conta = new ContaBancaria();
+
+        System.out.print("Digite o nome do titular: ");
+        conta.titular = entrada.nextLine();
+
+        System.out.print("Digite o saldo inicial: R$ ");
+        conta.saldo = entrada.nextDouble();
+
+        System.out.print("Digite o valor do deposito: R$ ");
+        conta.depositar(entrada.nextDouble());
+
+        System.out.print("Digite o valor do saque: R$ ");
+        conta.sacar(entrada.nextDouble());
+
+        System.out.println("Titular: " + conta.titular);
+        conta.exibirSaldo();
+        entrada.close();
+    }
+}
+
+
+================================================================================
+ARQUIVO: Atividade06/Atividade06_Livro.java
+================================================================================
+
+import java.util.Scanner;
+
+class Livro {
+    String titulo;
+    String autor;
+    int numeroPaginas;
+    boolean emprestado = false;
+
+    void emprestar() {
+        if (!emprestado) {
+            emprestado = true;
+            System.out.println("Livro emprestado com sucesso.");
+        } else {
+            System.out.println("O livro ja esta emprestado.");
+        }
+    }
+
+    void devolver() {
+        if (emprestado) {
+            emprestado = false;
+            System.out.println("Livro devolvido com sucesso.");
+        } else {
+            System.out.println("O livro nao esta emprestado.");
+        }
+    }
+
+    void exibirInformacoes() {
+        System.out.println("Titulo: " + titulo);
+        System.out.println("Autor: " + autor);
+        System.out.println("Numero de paginas: " + numeroPaginas);
+        System.out.println("Situacao: " + (emprestado ? "Emprestado" : "Disponivel"));
+    }
+}
+
+public class Atividade06_Livro {
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+        Livro livro = new Livro();
+
+        System.out.print("Digite o titulo: ");
+        livro.titulo = entrada.nextLine();
+
+        System.out.print("Digite o autor: ");
+        livro.autor = entrada.nextLine();
+
+        System.out.print("Digite o numero de paginas: ");
+        livro.numeroPaginas = entrada.nextInt();
+
+        livro.exibirInformacoes();
+        livro.emprestar();
+        livro.emprestar();
+        livro.exibirInformacoes();
+        livro.devolver();
+        livro.devolver();
+        livro.exibirInformacoes();
+
+        entrada.close();
+    }
+}
+
+
+================================================================================
+ARQUIVO: Atividade07/Atividade07_Funcionario.java
+================================================================================
+
+import java.util.Scanner;
+
+class Funcionario {
+    String nome;
+    String cargo;
+    double salario;
+
+    void aumentarSalario(double percentual) {
+        if (percentual > 0) {
+            salario = salario + (salario * percentual / 100);
+        } else {
+            System.out.println("O percentual deve ser positivo.");
+        }
+    }
+}
+
+public class Atividade07_Funcionario {
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+        Funcionario funcionario = new Funcionario();
+
+        System.out.print("Digite o nome: ");
+        funcionario.nome = entrada.nextLine();
+
+        System.out.print("Digite o cargo: ");
+        funcionario.cargo = entrada.nextLine();
+
+        System.out.print("Digite o salario: R$ ");
+        funcionario.salario = entrada.nextDouble();
+
+        System.out.print("Digite o percentual de aumento: ");
+        double percentual = entrada.nextDouble();
+
+        funcionario.aumentarSalario(percentual);
+
+        System.out.println("Nome: " + funcionario.nome);
+        System.out.println("Cargo: " + funcionario.cargo);
+        System.out.printf("Novo salario: R$ %.2f%n", funcionario.salario);
+        entrada.close();
+    }
+}
+
+
+================================================================================
+ARQUIVO: Atividade08/Atividade08_Retangulo.java
+================================================================================
+
+import java.util.Scanner;
+
+class Retangulo {
+    double largura;
+    double altura;
+
+    double calcularArea() {
+        return largura * altura;
+    }
+
+    double calcularPerimetro() {
+        return 2 * (largura + altura);
+    }
+}
+
+public class Atividade08_Retangulo {
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+        Retangulo retangulo = new Retangulo();
+
+        System.out.print("Digite a largura: ");
+        retangulo.largura = entrada.nextDouble();
+
+        System.out.print("Digite a altura: ");
+        retangulo.altura = entrada.nextDouble();
+
+        System.out.printf("Area: %.2f%n", retangulo.calcularArea());
+        System.out.printf("Perimetro: %.2f%n", retangulo.calcularPerimetro());
+        entrada.close();
+    }
+}
+
+
+================================================================================
+ARQUIVO: Atividade09/Atividade09_Celular.java
+================================================================================
+
+import java.util.Scanner;
+
+class Celular {
+    String marca;
+    String modelo;
+    int bateria = 100;
+
+    void usarCelular() {
+        if (bateria >= 10) {
+            bateria = bateria - 10;
+        } else {
+            bateria = 0;
+        }
+    }
+
+    void carregar() {
+        bateria = 100;
+    }
+
+    void exibirBateria() {
+        System.out.println("Bateria atual: " + bateria + "%");
+    }
+}
+
+public class Atividade09_Celular {
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+        Celular celular = new Celular();
+
+        System.out.print("Digite a marca: ");
+        celular.marca = entrada.nextLine();
+
+        System.out.print("Digite o modelo: ");
+        celular.modelo = entrada.nextLine();
+
+        celular.usarCelular();
+        celular.usarCelular();
+        celular.usarCelular();
+        celular.exibirBateria();
+
+        celular.carregar();
+        celular.exibirBateria();
+        entrada.close();
+    }
+}
+
+
+================================================================================
+ARQUIVO: Atividade10/Atividade10_CadastroPessoas.java
+================================================================================
+
+import java.util.Scanner;
+
+class PessoaCadastro {
+    String nome;
+    int idade;
+    String cidade;
+
+    void apresentar() {
+        System.out.println("Ola, meu nome e " + nome + " e tenho " + idade + " anos.");
+    }
+
+    void fazerAniversario() {
+        idade = idade + 1;
+    }
+
+    void exibirDados() {
+        System.out.println("Nome: " + nome);
+        System.out.println("Idade: " + idade);
+        System.out.println("Cidade: " + cidade);
+    }
+}
+
+public class Atividade10_CadastroPessoas {
+    static void cadastrarPessoa(Scanner entrada, PessoaCadastro pessoa, int numero) {
+        System.out.println("\nCadastro da pessoa " + numero);
+
+        System.out.print("Nome: ");
+        pessoa.nome = entrada.nextLine();
+
+        System.out.print("Idade: ");
+        pessoa.idade = Integer.parseInt(entrada.nextLine());
+
+        System.out.print("Cidade: ");
+        pessoa.cidade = entrada.nextLine();
+    }
+
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+
+        PessoaCadastro pessoa1 = new PessoaCadastro();
+        PessoaCadastro pessoa2 = new PessoaCadastro();
+        PessoaCadastro pessoa3 = new PessoaCadastro();
+
+        cadastrarPessoa(entrada, pessoa1, 1);
+        cadastrarPessoa(entrada, pessoa2, 2);
+        cadastrarPessoa(entrada, pessoa3, 3);
+
+        System.out.println("\n--- Dados das pessoas ---");
+        pessoa1.apresentar();
+        pessoa1.exibirDados();
+
+        System.out.println();
+        pessoa2.apresentar();
+        pessoa2.exibirDados();
+
+        System.out.println();
+        pessoa3.apresentar();
+        pessoa3.exibirDados();
+
+        System.out.println("\nA primeira pessoa fez aniversario!");
+        pessoa1.fazerAniversario();
+
+        System.out.println("\n--- Dados atualizados ---");
+        pessoa1.exibirDados();
+        System.out.println();
+        pessoa2.exibirDados();
+        System.out.println();
+        pessoa3.exibirDados();
+
+        entrada.close();
+    }
+}
+
+
