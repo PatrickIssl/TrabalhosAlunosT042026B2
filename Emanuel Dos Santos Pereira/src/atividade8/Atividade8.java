@@ -1,0 +1,29 @@
+package atividade8;
+
+class Retangulo {
+    double largura;
+    double altura;
+
+    double calcularArea() {
+        return largura * altura;
+    }
+
+    double calcularPerimetro() {
+        return 2 * (largura + altura);
+    }
+}
+
+public class Atividade8 {
+    public static void main(String[] args) {
+        Retangulo retangulo = new Retangulo();
+
+        retangulo.largura = 5;
+        retangulo.altura = 3;
+
+        System.out.println("Área: " +
+                retangulo.calcularArea());
+
+        System.out.println("Perímetro: " +
+                retangulo.calcularPerimetro());
+    }
+}
