@@ -1,0 +1,61 @@
+﻿Atividade sobre Java
+Aluno: Arthur Vinicíus Oliveira da Silva
+Professor: Patrick
+
+
+História do Java
+R: O Java foi criado em 1995 por James Gosling, na empresa Sun Microsystems. O projeto inicial tinha como objetivo a criação de tecnologias modernas de software para empresas eletrônicas de consumo.A ideia principal do Java era que os aparelhos eletronicos se comunicassem entre si. A frase “Write Once, Run Anywhere” significa “Escreva uma vez, execute em qualquer lugar”, ou seja, um programa Java pode funcionar em diferentes sistemas operacionais sem precisar ser modificado, o que ajudou a tornar a linguagem muito popular.
+
+
+Vantagens do Java
+Portabilidade 
+R: Funciona em diferentes sistemas operacionais,
+
+
+Segurança
+R: Possui recursos que protegem os programas contra falhas e ataques,
+
+
+Orientação a objetos: Facilita a organização e manutenção do código.
+
+
+Grande uso no mercado
+R: É utilizada por muitas empresas e oferece boas oportunidades de emprego.
+
+
+Comunidade ativa
+R: Possui muitos materiais de estudo, fóruns e suporte para desenvolvedores.
+
+
+Desvantagens do Java
+Maior consumo de memória
+R: pois utiliza a Máquina Virtual Java (JVM) que é responsável pela conversão em código específico da máquina e é necessário em JDK e JRE.
+
+
+Código mais extenso
+R:exigindo mais linhas para realizar algumas tarefas.
+
+
+Curva de aprendizado maior
+R: Principalmente para projetos grandes e corporativos.
+
+
+Empresas que utilizam Java
+Google: Desenvolvimento de aplicativos Android e serviços de backend.
+
+
+Amazon: Sistemas internos e plataformas de comércio eletrônico
+
+
+Netflix: Backend e processamento de dados
+
+
+LinkedIn: Backend da plataforma
+
+
+Uber: Sistemas internos e serviços de backend
+
+
+Diferença entre JDK e JRE
+JRE: É o ambiente utilizado para executar programas Java
+JDK: É o conjunto de ferramentas usado para desenvolver, compilar e executar programas, pois já inclui a JRE, por isso que quer realmente programar deve instalar o JDK
