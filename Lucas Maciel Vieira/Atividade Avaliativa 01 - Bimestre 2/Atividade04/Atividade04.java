@@ -1,0 +1,28 @@
+class Produto {
+    private String nome;
+    private double preco;
+    private int quantidade;
+
+    public Produto(String nome, double preco, int quantidade) {
+        this.nome = nome;
+        this.preco = preco;
+        this.quantidade = quantidade;
+    }
+
+    public double calcularTotal() {
+        return preco * quantidade;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+}
+
+public class Atividade04 {
+    public static void main(String[] args) {
+        Produto produto = new Produto("Caderno", 12.50, 4);
+
+        System.out.println("Produto: " + produto.getNome());
+        System.out.println("Valor total da compra: R$ " + produto.calcularTotal());
+    }
+}
