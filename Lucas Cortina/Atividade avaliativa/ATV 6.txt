@@ -1,0 +1,47 @@
+﻿ATV 6
+public class Livro {
+    String titulo;
+    String autor;
+    int numeroPaginas;
+    boolean emprestado;
+
+
+    public void emprestar() {
+        if (emprestado) {
+            System.out.println("O livro já está emprestado.");
+        } else {
+            emprestado = true;
+            System.out.println("Livro emprestado.");
+        }
+    }
+
+
+    public void devolver() {
+        if (!emprestado) {
+            System.out.println("O livro não está emprestado.");
+        } else {
+            emprestado = false;
+            System.out.println("Livro devolvido com sucesso.");
+        }
+    }
+
+
+    public void exibirInformacoes() {
+        System.out.println("Título: " + titulo);
+        System.out.println("Autor: " + autor);
+        System.out.println("Número de páginas: " + numeroPaginas);
+        System.out.println("Emprestado: " + emprestado);
+    }
+
+
+    public static void main(String[] args) {
+        Livro meuLivro = new Livro();
+        
+        meuLivro.titulo = "1";
+        meuLivro.autor = "Assis";
+        meuLivro.numeroPaginas = 256;
+        meuLivro.emprestado = false;
+        meuLivro.exibirInformacoes();
+        meuLivro.emprestar();
+    }
+}

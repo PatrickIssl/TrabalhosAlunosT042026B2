@@ -1,0 +1,31 @@
+﻿ATV 3
+package atividadepoo;
+
+
+public class Aluno {
+        String nome;
+        int idade;
+        Double nota;
+        public static void main(String[] args) {
+                Aluno a = new Aluno();
+                a.nome = ("Fulano");
+                a.idade = (25);
+                a.nota = (7.5);
+                
+                String situacao = verificarSituacao(a.nota);
+                System.out.println("Nome: " + a.nome);
+                System.out.println("Nota: " + a.nota);
+                System.out.println("Situação: " + situacao);
+        }
+        public static String verificarSituacao(Double nota) {
+                if((nota>=0) && (nota<=6)) {
+                        return "Reprovado";
+                }
+                else if (nota<=10) {
+                        return "Aprovado";
+                }
+                else {
+                        return "Nota inválida";
+                }
+        }
+}

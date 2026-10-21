@@ -1,0 +1,22 @@
+﻿ATV 7
+package atividadepoo;
+
+
+public class Funcionario {
+        String nome;
+        String cargo;
+        Double salario;
+        public static void main(String[] args) {
+                Funcionario f = new Funcionario();
+                f.nome = ("Beltrano");
+                f.cargo = ("Analista de dados");
+                f.salario = (2500.0);
+                int percentual = 10;
+                
+                f.salario = aumentarSalario(f.salario, percentual);
+                System.out.printf("Novo salário: %.2f", f.salario);
+        }
+        public static double aumentarSalario(Double salario, int percentual) {
+                return salario * (1 + (percentual/100.0));
+        }
+}

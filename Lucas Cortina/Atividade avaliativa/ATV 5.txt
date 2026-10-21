@@ -1,0 +1,34 @@
+﻿ATV 5
+package atividadepoo;
+
+
+public class ContaBancaria {
+        String titular;
+        Double saldo;
+        public static void main(String[] args) {
+                ContaBancaria c = new ContaBancaria();
+                c.titular = ("Beltrano");
+                c.saldo = (1000.0);
+                Double saq = 150.0;
+                Double dep = 100.0;
+                
+                c.saldo = depositar(c.saldo, dep);
+                c.saldo = sacar(c.saldo, saq);
+                exibirSaldo(c.saldo);
+        }
+        public static Double depositar(Double saldo, Double deposito) {
+                return saldo + deposito;
+        }
+        public static Double sacar(Double saldo, Double saque) {
+                if (saque<= saldo) {
+                        return saldo - saque;
+                }
+                else {
+                        System.out.println("Saldo insuficiente para valor de saque desejado");
+                        return saldo;
+                }
+        }
+        public static void exibirSaldo(Double saldo) {
+                System.out.println("Saldo final de: " + saldo);
+        }
+}
