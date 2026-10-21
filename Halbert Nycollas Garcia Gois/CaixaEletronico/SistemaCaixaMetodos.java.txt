@@ -1,0 +1,112 @@
+//Exibir um menu com opções:V
+//1. Consultar saldo V
+//2. Depositar dinheiro V
+//3. Sacar dinheiro
+//4. Sair
+// Usar Scanner para capturar entradas do usuário.
+// Utilizar um laço (while) para manter o programa em execução até que o usuário escolha Sair.
+
+import java.util.Scanner;
+
+public class SistemaCaixaMetodos {
+    static Scanner scan = new Scanner(System.in);
+
+    public static void main(String[] args) {
+
+        boolean verificador = false;
+        int escolha = 0;
+        double saldo = 0;
+        boolean senhaVeri = false;
+
+        senhaVeri = testeSenhaDoSistema(senhaVeri);
+        if (senhaVeri == true) {
+            while (verificador == false) {
+
+                mostrarMenu();//metodo mostrando o menu
+                escolha = scan.nextInt();
+
+                if (escolha == 1) {
+                    mostrarSaldo(saldo);
+
+                } else if (escolha == 2) {
+                    saldo = recebeDeposito(saldo);
+
+                } else if (escolha == 3) {
+                    saldo = efetuarSaque(saldo);
+
+                } else if (escolha == 4) {
+                    verificador = true;
+
+                }
+
+            }
+        }
+    }
+
+    public static boolean testeSenhaDoSistema(boolean senhaVerif) {
+        int testeSenha = 0;
+        int senhaDoSistema = 123456;
+
+        for (int i = 0; i < 3; i++) {
+            System.out.println("Entre com a senha do progama.");
+            System.out.printf("Senha: ");
+            testeSenha = scan.nextInt();
+
+            if (testeSenha == senhaDoSistema) {
+                senhaVerif = true;
+                i = 3;
+            } else {
+                System.out.printf("\nSenha errada!\nVoce tem mais %d tentativas.",i);
+            }
+        }
+    return senhaVerif;
+    }
+
+
+
+    public static void mostrarMenu() {
+        System.out.println("\n=========MENU=========");
+        System.out.printf("1. Consultar saldo\n2. Depositar dinheiro\n3. Sacar dinheiro\n4. Sair\n");
+    }
+
+    public static void mostrarSaldo(double saldo) {
+        System.out.println("Seu saldo atualmente e igual a: R$ " + saldo);
+    }
+
+    public static double recebeDeposito(double saldo) {
+        System.out.println("Qual o valor do deposito?");
+        System.out.printf("R$ ");
+        double deposito = scan.nextDouble();
+        if (deposito > 0) {
+            saldo = saldo + deposito;
+        } else if (deposito <= 0) {
+            System.out.println("Nao aceitamos valores negativos ou iguais a zero na area de deposito!");
+            System.out.println("Entre com um valor de deposito valido.");
+            }
+        return saldo;
+    }
+
+    public static double efetuarSaque(double saldo) {
+        System.out.println("Entre com o valor que voce deseja sacar.");
+        System.out.printf("R$ ");
+        double saque = scan.nextDouble();
+        double limiteSaque = 500;
+
+        if (saque >= limiteSaque) {
+            System.out.println("Limite de saldo diario atingido! ");
+
+        } else if (saque <= 0) {
+            System.out.println("Nao aceitamos valores negativos ou iguais a zero na area de saque!");
+            System.out.println("Entre com um valor de saque valido.");
+
+        } else if (saque > saldo) {
+            System.out.println("Valor de saldo insuficiente");
+
+        } else {
+            saldo = saldo - saque;
+            System.out.printf("Saldo restante na sua conta e de: R$ %.2f",saldo);
+        }
+
+        return saldo;
+    }
+}
