@@ -4,7 +4,7 @@ public class Bispo extends Peca{
 
     
     public Bispo(EnumCor cor, int linha, int coluna) {
-        super(cor, linha, coluna,"/home/operador/Downloads/figs/BISPO"+cor+".gif");
+        super(cor, linha, coluna,"C:\\Users\\HP Victus\\Desktop\\aulas\\2026\\mobile\\TrabalhosAlunosT042026B2\\Patrick DalLago\\Xadrez\\Xadrez\\src\\figs\\BISPO"+cor+".gif");
     }
     
     public Bispo(EnumCor cor, int linha, int coluna, String imagem) {

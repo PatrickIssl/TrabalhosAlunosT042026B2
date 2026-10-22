@@ -6,7 +6,7 @@ public class Peao extends Peca{
     
     
     public Peao(EnumCor cor, int linha, int coluna) {
-        super(cor, linha, coluna,"/home/operador/Downloads/figs/PEAO"+cor+".gif");
+        super(cor, linha, coluna,"C:\\Users\\HP Victus\\Desktop\\aulas\\2026\\mobile\\TrabalhosAlunosT042026B2\\Patrick DalLago\\Xadrez\\Xadrez\\src\\figs\\PEAO"+cor+".gif");
     }
     
     public Peao(EnumCor cor, int linha, int coluna, String imagem) {

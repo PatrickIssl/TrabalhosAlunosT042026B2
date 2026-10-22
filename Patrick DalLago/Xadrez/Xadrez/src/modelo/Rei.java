@@ -3,7 +3,7 @@ package modelo;
 public class Rei extends Peca{
 
     public Rei(EnumCor cor, int linha, int coluna) {
-        super(cor, linha, coluna,"/home/operador/Downloads/figs/REI"+cor+".gif");
+        super(cor, linha, coluna,"C:\\Users\\HP Victus\\Desktop\\aulas\\2026\\mobile\\TrabalhosAlunosT042026B2\\Patrick DalLago\\Xadrez\\Xadrez\\src\\figs\\REI"+cor+".gif");
     }
     public Rei(EnumCor cor, int linha, int coluna, String imagem) {
         super(cor, linha, coluna, imagem);

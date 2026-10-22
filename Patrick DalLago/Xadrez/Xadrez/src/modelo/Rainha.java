@@ -4,7 +4,7 @@ public class Rainha extends Peca{
 
     
     public Rainha(EnumCor cor, int linha, int coluna) {
-        super(cor, linha, coluna,"/home/operador/Downloads/figs/RAINHA"+cor+".gif");
+        super(cor, linha, coluna,"C:\\Users\\HP Victus\\Desktop\\aulas\\2026\\mobile\\TrabalhosAlunosT042026B2\\Patrick DalLago\\Xadrez\\Xadrez\\src\\figs\\RAINHA"+cor+".gif");
     }
     
     public Rainha(EnumCor cor, int linha, int coluna, String imagem) {

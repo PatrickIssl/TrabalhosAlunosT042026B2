@@ -5,7 +5,7 @@ public class Cavalo extends Peca{
 
     
     public Cavalo(EnumCor cor, int linha, int coluna) {
-        super(cor, linha, coluna,"/home/operador/Downloads/figs/CAVALO"+cor+".gif");
+        super(cor, linha, coluna,"C:\\Users\\HP Victus\\Desktop\\aulas\\2026\\mobile\\TrabalhosAlunosT042026B2\\Patrick DalLago\\Xadrez\\Xadrez\\src\\figs\\CAVALO"+cor+".gif");
     }
     
     public Cavalo(EnumCor cor, int linha, int coluna, String imagem) {

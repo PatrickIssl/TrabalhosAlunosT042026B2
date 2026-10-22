@@ -3,7 +3,7 @@ package modelo;
 public class Torre extends Peca{
 
     public Torre(EnumCor cor, int linha, int coluna) {
-        super(cor, linha, coluna,"/home/operador/Downloads/figs/TORRE"+cor+".gif");
+        super(cor, linha, coluna,"C:\\Users\\HP Victus\\Desktop\\aulas\\2026\\mobile\\TrabalhosAlunosT042026B2\\Patrick DalLago\\Xadrez\\Xadrez\\src\\figs\\TORRE"+cor+".gif");
     }
 
     public Torre(EnumCor cor, int linha, int coluna, String imagem) {
