@@ -1,0 +1,32 @@
+package atividadepoo;
+
+public class Celular {
+    String marca;
+    String modelo;
+    int bateria = 100;
+
+    public void usarCelular() {
+        if (bateria >= 10) {
+            bateria -= 10;
+        } else {
+            bateria = 0;
+        }
+    }
+    public void carregar() {
+        bateria = 100;
+    }
+    public void exibirBateria() {
+        System.out.println("Bateria atual: " + bateria + "%");
+    }
+    public static void main(String[] args) {
+        Celular celular = new Celular();
+        celular.marca = "1";
+        celular.modelo = "K";
+        celular.usarCelular();
+        celular.usarCelular();
+        celular.usarCelular();
+        celular.exibirBateria();
+        celular.carregar();
+        celular.exibirBateria();
+    }
+}

@@ -1,0 +1,20 @@
+package atividadepoo;
+
+public class Carro {
+	String marca;
+	String modelo;
+	int ano;
+	public static void main(String[] args) {
+		Carro c = new Carro();
+		c.marca = ("Chevrolet");
+		c.modelo = ("S10");
+		c.ano = (2015);
+		exibirDados(c.marca, c.modelo, c.ano);
+	}
+	public static void exibirDados(String marca, String modelo, int ano) {
+		System.out.println("Marca: " + marca);
+		System.out.println("Modelo: " + modelo);
+		System.out.println("Ano: " + ano);
+	}
+
+}
