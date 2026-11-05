@@ -1,0 +1,191 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+
+    static Scanner scanner = new Scanner(System.in);
+
+    
+    static ArrayList<Jogo> jogos = new ArrayList<>();
+
+    public static void main(String[] args) {
+
+        int opcao;
+
+        do {
+            System.out.println("\n===== SISTEMA DE GERENCIAMENTO =====");
+            System.out.println("1 - Cadastrar jogo");
+            System.out.println("2 - Listar todos os jogos");
+            System.out.println("3 - Buscar jogo por ID");
+            System.out.println("4 - Atualizar jogo");
+            System.out.println("5 - Excluir jogo");
+            System.out.println("0 - Sair");
+            System.out.print("Escolha uma opcao: ");
+
+            opcao = lerInteiro();
+
+            switch (opcao) {
+
+                case 1:
+                    cadastrarJogo();
+                    break;
+
+                case 2:
+                    listarJogos();
+                    break;
+
+                case 3:
+                    buscarJogo();
+                    break;
+
+                case 4:
+                    atualizarJogo();
+                    break;
+
+                case 5:
+                    excluirJogo();
+                    break;
+
+                case 0:
+                    System.out.println("Sistema encerrado!");
+                    break;
+
+                default:
+                    System.out.println("Opcao invalida!");
+            }
+
+        } while (opcao != 0);
+
+        scanner.close();
+    }
+
+    
+    public static int lerInteiro() {
+        while (true) {
+            try {
+                return Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.print("Digite um numero valido: ");
+            }
+        }
+    }
+
+    
+    public static void cadastrarJogo() {
+
+        System.out.println("\n--- CADASTRAR JOGO ---");
+
+        System.out.print("Digite o ID: ");
+        int id = lerInteiro();
+
+        if (buscarPorId(id) != null) {
+            System.out.println("Esse ID ja esta cadastrado!");
+            return;
+        }
+
+        System.out.print("Digite o nome do jogo: ");
+        String nome = scanner.nextLine();
+
+        System.out.print("Digite o genero: ");
+        String genero = scanner.nextLine();
+
+        Jogo novoJogo = new Jogo(id, nome, genero);
+
+        jogos.add(novoJogo);
+
+        System.out.println("Jogo cadastrado com sucesso!");
+    }
+
+    
+    public static void listarJogos() {
+
+        System.out.println("\n--- LISTA DE JOGOS ---");
+
+        if (jogos.isEmpty()) {
+            System.out.println("Nenhum jogo cadastrado.");
+            return;
+        }
+
+        for (Jogo jogo : jogos) {
+            jogo.exibirDados();
+        }
+    }
+
+    
+    public static Jogo buscarPorId(int id) {
+
+        for (Jogo jogo : jogos) {
+            if (jogo.getId() == id) {
+                return jogo;
+            }
+        }
+
+        return null;
+    }
+
+    
+    public static void buscarJogo() {
+
+        System.out.println("\n--- BUSCAR JOGO ---");
+
+        System.out.print("Digite o ID do jogo: ");
+        int id = lerInteiro();
+
+        Jogo jogo = buscarPorId(id);
+
+        if (jogo != null) {
+            jogo.exibirDados();
+        } else {
+            System.out.println("Jogo nao encontrado!");
+        }
+    }
+
+    
+    public static void atualizarJogo() {
+
+        System.out.println("\n--- ATUALIZAR JOGO ---");
+
+        System.out.print("Digite o ID do jogo: ");
+        int id = lerInteiro();
+
+        Jogo jogo = buscarPorId(id);
+
+        if (jogo != null) {
+
+            System.out.print("Digite o novo nome: ");
+            String novoNome = scanner.nextLine();
+
+            System.out.print("Digite o novo genero: ");
+            String novoGenero = scanner.nextLine();
+
+            jogo.setNome(novoNome);
+            jogo.setGenero(novoGenero);
+
+            System.out.println("Jogo atualizado com sucesso!");
+
+        } else {
+            System.out.println("Jogo nao encontrado!");
+        }
+    }
+
+    
+    public static void excluirJogo() {
+
+        System.out.println("\n--- EXCLUIR JOGO ---");
+
+        System.out.print("Digite o ID do jogo: ");
+        int id = lerInteiro();
+
+        Jogo jogo = buscarPorId(id);
+
+        if (jogo != null) {
+
+            jogos.remove(jogo);
+
+            System.out.println("Jogo excluido com sucesso!");
+
+        } else {
+            System.out.println("Jogo nao encontrado!");
+        }
+    }
+}
