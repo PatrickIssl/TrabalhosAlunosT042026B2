@@ -1,0 +1,211 @@
+import java.text.NumberFormat;
+import java.util.Locale;
+import java.util.Scanner;
+
+public class CaixaEletronico {
+
+    private static final Scanner scanner = new Scanner(System.in);
+    private static final NumberFormat formatoMoeda =
+            NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+
+    private static final double LIMITE_SAQUE_DIARIO = 500;
+    private static final int MAX_TENTATIVAS = 3;
+
+    private static double saldo = 0;
+    private static double saqueDiario = 0;
+    private static String senha;
+
+    public static void main(String[] args) {
+        System.out.println("BEM-VINDO AO CAIXA ELETRÔNICO");
+
+        definirSenhaInicial();
+
+        if (autenticar()) {
+            menuPrincipal();
+        } else {
+            System.out.println("\nNúmero máximo de tentativas atingido.");
+        }
+
+        System.out.println("\nPrograma encerrado.");
+        scanner.close();
+    }
+
+    private static void definirSenhaInicial() {
+        System.out.println("\nAntes de continuar, defina sua senha de acesso.");
+
+        senha = lerNovaSenhaComConfirmacao();
+
+        System.out.println("\nSenha cadastrada com sucesso!");
+    }
+
+    private static String lerNovaSenhaComConfirmacao() {
+        while (true) {
+            System.out.print("Digite uma senha com 4 números: ");
+            String novaSenha = scanner.nextLine().trim();
+
+            if (!validarFormatoSenha(novaSenha)) {
+                System.out.println("Senha inválida. Use exatamente 4 números.");
+                continue;
+            }
+
+            System.out.print("Confirme a senha: ");
+            String confirmacao = scanner.nextLine().trim();
+
+            if (!novaSenha.equals(confirmacao)) {
+                System.out.println("As senhas não coincidem. Tente novamente.");
+                continue;
+            }
+
+            return novaSenha;
+        }
+    }
+
+    private static boolean validarFormatoSenha(String senha) {
+        return senha.matches("\\d{4}");
+    }
+
+    private static boolean autenticar() {
+        int tentativas = 0;
+
+        while (tentativas < MAX_TENTATIVAS) {
+            System.out.print("\nDigite sua senha: ");
+            String senhaDigitada = scanner.nextLine().trim();
+
+            if (senhaDigitada.equals(senha)) {
+                System.out.println("Senha correta! Bem-vindo(a).");
+                return true;
+            }
+
+            tentativas++;
+            int restantes = MAX_TENTATIVAS - tentativas;
+
+            if (restantes > 0) {
+                System.out.println("Senha incorreta. Você tem mais "
+                        + restantes + " tentativa(s).");
+            }
+        }
+
+        return false;
+    }
+
+    private static void alterarSenha() {
+        System.out.print("\nDigite a senha atual: ");
+        String senhaAtual = scanner.nextLine().trim();
+
+        if (!senhaAtual.equals(senha)) {
+            System.out.println("Senha atual incorreta.");
+            return;
+        }
+
+        while (true) {
+            String novaSenha = lerNovaSenhaComConfirmacao();
+
+            if (novaSenha.equals(senha)) {
+                System.out.println("A nova senha deve ser diferente da atual.");
+            } else {
+                senha = novaSenha;
+                System.out.println("Senha alterada com sucesso!");
+                return;
+            }
+        }
+    }
+
+    private static void menuPrincipal() {
+        int opcao = -1;
+
+        while (opcao != 5) {
+            System.out.println("\n----- CAIXA ELETRÔNICO -----");
+            System.out.println("1 - Consultar saldo");
+            System.out.println("2 - Depositar dinheiro");
+            System.out.println("3 - Sacar dinheiro");
+            System.out.println("4 - Alterar senha");
+            System.out.println("5 - Sair");
+            System.out.print("Escolha uma opção: ");
+
+            opcao = lerInteiro();
+
+            switch (opcao) {
+                case 1:
+                    consultarSaldo();
+                    break;
+                case 2:
+                    depositar();
+                    break;
+                case 3:
+                    sacar();
+                    break;
+                case 4:
+                    alterarSenha();
+                    break;
+                case 5:
+                    System.out.println("Obrigado por utilizar o caixa eletrônico!");
+                    break;
+                default:
+                    System.out.println("Opção inválida. Tente novamente.");
+            }
+        }
+    }
+
+    private static void consultarSaldo() {
+        System.out.println("Seu saldo atual é: " + formatoMoeda.format(saldo));
+    }
+
+    private static void depositar() {
+        System.out.print("Digite o valor que deseja depositar: R$ ");
+        double deposito = lerDouble();
+
+        if (deposito <= 0) {
+            System.out.println("O valor do depósito deve ser maior que zero.");
+            return;
+        }
+
+        saldo += deposito;
+        System.out.println("Depósito de " + formatoMoeda.format(deposito)
+                + " realizado com sucesso!");
+    }
+
+    private static void sacar() {
+        System.out.print("Digite o valor que deseja sacar: R$ ");
+        double saque = lerDouble();
+
+        if (saque <= 0) {
+            System.out.println("O valor do saque deve ser maior que zero.");
+        } else if (saque > saldo) {
+            System.out.println("Saldo insuficiente.");
+        } else if (saqueDiario + saque > LIMITE_SAQUE_DIARIO) {
+            System.out.println("Limite diário de saque atingido.");
+            System.out.println("Você ainda pode sacar: "
+                    + formatoMoeda.format(LIMITE_SAQUE_DIARIO - saqueDiario));
+        } else {
+            saldo -= saque;
+            saqueDiario += saque;
+
+            System.out.println("Saque de " + formatoMoeda.format(saque)
+                    + " realizado com sucesso!");
+        }
+    }
+
+    private static int lerInteiro() {
+        while (!scanner.hasNextInt()) {
+            System.out.print("Entrada inválida. Digite um número inteiro: ");
+            scanner.next();
+        }
+
+        int valor = scanner.nextInt();
+        scanner.nextLine();
+
+        return valor;
+    }
+
+    private static double lerDouble() {
+        while (!scanner.hasNextDouble()) {
+            System.out.print("Entrada inválida. Digite um valor numérico: ");
+            scanner.next();
+        }
+
+        double valor = scanner.nextDouble();
+        scanner.nextLine();
+
+        return valor;
+    }
+}
