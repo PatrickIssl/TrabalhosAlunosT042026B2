@@ -1,0 +1,74 @@
+package caixaeletro;
+
+import java.util.Scanner;
+
+
+public class caixa{
+	
+	public static void main(String[] args) {
+		
+		Scanner scan = new Scanner(System.in);
+		int opcao = 0, senha = 0, tentativa = 0;
+		double saldo = 0,valor = 0,sacar = 0, limite = 0;
+		
+			while (senha != 1234) {
+				System.out.println("Digite a senha de 4 digitos: ");
+				senha = scan.nextInt();
+					if(senha != 1234) {
+						System.out.println("Senha incorreta");
+						tentativa++;
+					}
+					if(tentativa == 3) {
+						System.out.println("Número de tentativas excedidas");
+						scan.close();
+						return;
+					}
+			}
+
+		while (opcao != 4) {
+			
+		System.out.println("  Menu  ");
+		System.out.println("  Consultar Saldo - 1  ");
+		System.out.println("  Depositar Dinheiro - 2  ");
+		System.out.println("  Sacar Dinheiro - 3  ");
+		System.out.println("  Sair - 4  ");
+		opcao = scan.nextInt();
+		
+		if(opcao > 4) {
+			System.out.println("Opcao invalida");
+		} else if (opcao < 1) {
+			System.out.println("Opcao invalida");
+		}
+		
+		if(opcao == 1) {
+			System.out.println("R$ " + saldo);
+		}
+		if(opcao == 2) {
+		System.out.println("Insira o valor que deseja depositar: ");
+		valor = scan.nextDouble();
+			if(valor<=0) {
+				System.out.println("Não é possível depositar esse valor");	
+			} else {
+				saldo += valor;
+			}
+		}
+		if(opcao == 3) {
+			System.out.println("Insira o valor que deseja sacar: ");
+			sacar = scan.nextDouble();
+			if(sacar > saldo) {
+				System.out.println("Saldo insuficiente");
+			} else {
+				limite += sacar;
+					if(limite > 500) {
+						System.out.println("Limite diário atingido");
+						limite -= sacar;
+					} else {
+						saldo -= sacar;
+						System.out.println("O valor de " + sacar + " foi sacado com sucesso!");
+					}
+			}
+		}
+	}
+		scan.close();
+}
+}
